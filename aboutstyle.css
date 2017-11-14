@@ -1,0 +1,32 @@
+body {
+    background-color: lightblue;
+}
+
+h1{
+	text-align: center;
+}
+
+h3{
+	text-align: center;
+}
+
+p{
+	text-align:center;
+}
+
+.header{
+	font-size: 40px;
+}
+
+#text1{
+	font-style: italic;
+}
+
+#map {
+	margin-left:40px;
+	margin-right:40px;
+        height: 400px;
+        background-color: grey;
+}
+
+
