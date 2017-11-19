@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: black;
 }
 
 h1{
@@ -11,15 +11,11 @@ h3{
 }
 
 p{
-	text-align:center;
+	text-align: center;
 }
 
 .header{
 	font-size: 40px;
-}
-
-#text1{
-	font-style: italic;
 }
 
 #map {
@@ -29,4 +25,69 @@ p{
         background-color: grey;
 }
 
+.control-ui{
+  background-color: white;
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
+  text-align: center;
+  width: 90px;
+  height: 30px;
+}
 
+.control-text{
+  front-family: Arial,sans-serif;
+  font-size: 12px;
+  padding: 4px 4px;
+}
+
+.logo {
+	padding-bottom: 20px;
+	width:50%;
+	height:50%;
+	min-width:120px;
+	outline: 0 !important;
+    	border:0 none !important;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+	background-color: transparent;
+	color: transparent;
+	
+}
+.nav>li>a.active,
+.nav>li>a:hover,
+.nav>li>a:focus {
+	background-color: transparent;
+	color: transparent;
+}
+
+.press, img, .press:focus, img:focus{
+    outline: 0 !important;
+    border:0 none !important;
+}
+
+.button {
+  display: inline-block;
+  /*-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;*/
+  border: none;
+  font: normal 48px/normal "Warnes", Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  text-decoration: normal;
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #ff00de , 0 0 70px #ff00de , 0 0 80px #ff00de , 0 0 100px #ff00de ;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.button:hover {
+  text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
+}

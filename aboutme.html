@@ -1,73 +1,63 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<link rel="stylesheet" href="aboutstyle.css">
-
-
-<title>About Me</title>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!--  -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Warnes' rel='stylesheet'>
+	<link rel="stylesheet" href="aboutstyle.css"/>
+	
+	<!--External libraries-->
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--Scripts-->
+	<script src="script/google_map.js"></script>
+	
+	<title>Street Racing</title>
 </head>
 <body>
-
-<h1 class = "header">Connor Jardine</h1>
-
-<h1>Education</h1>
-	<p>I am a 3rd year Software Engineering student at Glasgow University. </p>
-
-<h1>Hobby</h1>
-	<p>Bagpipes and GU Mountaineering</p>
-
-<h1>From</h1>
-	<p id = "text1">Airdrie</p>
+	<div class="container-fluid">
+ 		<ul class="nav nav-pills nav-justified">
+   			<li><a href="aboutme.html"><img class="logo" src="img/logo.png" alt="Street Racing logo"></a></li>
+   			<li><a href="aboutme.html"><div class="button">
+				<h3>Create New Race</h3>
+			</div></a></li>
+   			<li><a href="aboutme.html"><div class="button">
+				<h3>Leaderboard</h3>
+			</div></a></li>
+   			<li><a href="aboutme.html"><div class="button">
+				<h3>My Profile</h3>
+			</div></a></li>
+			<li><a href="aboutme.html"><div class="button">
+				<h4>Log Out</h4>
+			</div></a></li>
+  		</ul>
+	</div>
 
 <body onLoad="loadXMLDoc();">
 
 <p id="someElement"></p>
 
-<script> 
-function loadXMLDoc() {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      myFunction(this);
-    }
-  };
-  xmlhttp.open("GET", "A.gpx", true);
-  xmlhttp.send();
-}
 
-function myFunction(xml) {
-  var x, i, xmlDoc, txt;
-  xmlDoc = xml.responseXML;
-  txt = "";
-  x = xmlDoc.getElementsByTagName("name");
-  for (i = 0; i< x.length; i++) {
-    txt += x[i].childNodes[0].nodeValue + "<br>";
-  }
-  document.getElementById("someElement").innerHTML = txt;
-}
-</script>
-
-
-<h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        var uluru = {lat: 55.873724, lng: -4.292538};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap">
-    </script>
+<div id="map"></div>
+<div id="control-div" class="control-div">
+  <div id= "control-zoom-in" class="control-ui" title = "Click to zoom in">
+    <div id="control-text" class="control-text">
+      <p>+</p>
+    </div>
+  </div>
+</div>
+<div id="control-div" class="control-div">
+  <div id="control-zoom-out" class="control-ui" title = "Click to zoom out">
+    <div id="control-text" class="control-text">
+      <p>-</p>
+    </div>
+  </div>
+</div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap"></script>
 
 
 </body>
