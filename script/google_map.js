@@ -21,18 +21,10 @@ function myFunction(xml) {
 }
 
 function initMap() {
-	var controlDiv =$("#control-div");
 	var controlZoomIn = $("#control-zoom-in");
 	var controlZoomOut = $("#control-zoom-out");
+	var controlStreetView = $("#control-street-view");
 	var controlText = $("#control-text");
-	
-	controlZoomIn.click(function() {
-		map.setZoom(map.getZoom()+1);
-	});
-	
-	controlZoomOut.click(function() {
-		map.setZoom(map.getZoom()-1);
-	});
 
 	var glasgow_coords = {lat: 55.873724, lng: -4.292538};
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -76,7 +68,7 @@ function initMap() {
 			{
 				featureType: 'road',
 				elementType: 'labels.text.fill',
-				stylers: [{color: '#00ffff'}] //9400D3
+				stylers: [{color: '#00ffff'}] //9400D3 (alternative)
 			},
 			{
 				featureType: 'road.highway',
@@ -123,5 +115,18 @@ function initMap() {
 	var marker = new google.maps.Marker({
 		position: glasgow_coords,
 		map: map
+	});
+	
+	// Custom map controls
+	controlZoomIn.click(function() {
+		map.setZoom(map.getZoom()+1);
+	});
+	
+	controlZoomOut.click(function() {
+		map.setZoom(map.getZoom()-1);
+	});
+	
+	controlStreetView.click(function() {
+  		map.getStreetView().setOptions({visible:true,position:glasgow_coords});
 	});
 }
