@@ -14,7 +14,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!--Scripts-->
-	<script src="script/google_map.js"></script>
+	<script src="script/create_race.js"></script>
 	
 	<title>Street Racing</title>
 </head>
@@ -37,13 +37,9 @@
   		</ul>
 	</div>
 
-<body onLoad="loadXMLDoc();">
-
-<p id="someElement"></p>
-
-
 <div id="map"></div>
 <!------------------------------------------------------------------------^ Map! ^--------------------------------------------------------------------------------->
+
 
 <div class="container-fluid">
 	<div class="col-sm-1" align="center">
@@ -71,8 +67,40 @@
 	<div class="col-sm-1"></div>
 
 </div>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap"></script>
 
+<!--------------------------- Peddle Buttons ------------------------------------->
+<!-- Start point peddle. -->
+<div class="container-fluid">
+	<div id="raceButtonCol" class="col-lg-3" align="center"><div class="control-panel">
+		<div class="row">
+			<div id="control-race-start" class="col-sm-4"><div class="raceSetButtons">
+				<a href="index.html">
+					<img src="img/accelerator.png" width="100" height="200" alt="Click this to set start point.">
+				</a>
+			</div></div>
+
+<!-- Waypoint point peddle. -->
+			<div id="control-race-finish" class="col-sm-4"><div class="raceSetButtons">
+				<a href="index.html">
+					<img src="img/waypointPeddle.png" width="100" height="200" alt="Click this to set start point.">
+				</a>
+			</div></div>
+
+<!-- Break point peddle. -->
+			<div class="col-sm-4"><div class="raceSetButtons">
+				<a href="index.html">
+					<img src="img/breakPeddle.png" width="100" height="200" alt="Click this to set start point.">
+				</a>
+			</div></div>
+		</div>
+	</div></div>
+
+<!-- Empty side space. -->
+	<div class="col-sm-9" align="center"></div>
+</div>
+
+<!--------------------------- Peddle Buttons ------------------------------------->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap"></script>
 
 </body>
 </html> 
