@@ -37,6 +37,12 @@ p{
 	height: 60px;
 }
 
+.profile{
+	text-align: left;
+	margin-left:800px;
+	margin-right:100px;
+}
+
 #control-zoom-in {
 	margin-left: 25px;
 }
