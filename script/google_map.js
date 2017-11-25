@@ -2,6 +2,7 @@ function initMap() {
 	var controlZoomIn = $("#control-zoom-in");
 	var controlZoomOut = $("#control-zoom-out");
 	var controlStreetView = $("#control-street-view");
+	var controlMapView = $("#control-map-view");
 	var controlText = $("#control-text");
 
 	var glasgow_coords = {lat: 55.873724, lng: -4.292538};
@@ -106,5 +107,9 @@ function initMap() {
 	
 	controlStreetView.click(function() {
   		map.getStreetView().setOptions({visible:true,position:glasgow_coords});
+	});
+
+	controlMapView.click(function() {
+  		map.getStreetView().setOptions({visible:false,position:glasgow_coords});
 	});
 }

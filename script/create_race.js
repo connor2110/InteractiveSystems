@@ -2,8 +2,10 @@ function initMap() {
 	var controlZoomIn = $("#control-zoom-in");
 	var controlZoomOut = $("#control-zoom-out");
 	var controlStreetView = $("#control-street-view");
+	var controlMapView = $("#control-map-view");
 	var controlText = $("#control-text");
 	var controlRaceStart = $("#control-race-start");
+	var controlRaceFinish = $("#control-race-finish");
 
 	var glasgow_coords = new google.maps.LatLng(55.873724, -4.292538);
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -98,6 +100,14 @@ function initMap() {
 		title: "Drag me!",
 		icon: 'img/start_flag.png'
 	});
+
+	var endMarker = new google.maps.Marker({
+		position: glasgow_coords,
+		map: map,
+		draggable: true,
+		title: "Drag me!",
+		icon: 'img/end_flag.png'
+	});
 	
 	// Custom map controls
 	controlZoomIn.click(function() {
@@ -112,18 +122,17 @@ function initMap() {
   		map.getStreetView().setOptions({visible:true,position:glasgow_coords});
 	});
 
+	controlMapView.click(function() {
+  		map.getStreetView().setOptions({visible:false,position:glasgow_coords});
+	});
+
 	controlRaceStart.click(function() {
 		marker.getPosition()
-		alert("Start position saved")
+		alert("Start position saved.")
 	});
 	
 	controlRaceFinish.click(function() {
 		marker.getPosition()
-		alert("Waypoint saved")
-	});
-	
-	controlRaceFinish.click(function() {
-		marker.getPosition()
-		alert("End position saved")
+		alert("End position saved.")
 	});
 }
