@@ -9,7 +9,7 @@ function initMap() {
 
 	var glasgow_coords = new google.maps.LatLng(55.873724, -4.292538);
 	var directionsService = new google.maps.DirectionsService;
-  	var directionsDisplay = new google.maps.DirectionsRenderer;
+  	var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
 	var map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 12,
 		center: glasgow_coords,
@@ -142,8 +142,9 @@ function initMap() {
 				var maxLon = null;
 				var minLat = null;
 				var minLon = null;
-				var latlons = []
-				var trip = 0
+				var latlons = [];
+				var trip = 0;
+				var lengthTotal = 0;
 				
 				// Iterate through all track segements and find a route.
 				$xml.find('trkpt').each(function(){
@@ -189,18 +190,41 @@ function initMap() {
 							strokeOpacity: 0.4,
 							strokeWeight: 10,
 							map: map
+						
 						});
-
+						//console.log("line size: " + google.maps.geometry.spherical.computeLength(line.getPath()));  //linecheck
+						lengthTotal = lengthTotal + google.maps.geometry.spherical.computeLength(line.getPath());
 						lastLon = lon;
 						lastLat = lat;
 						
 					}
 
+				//console.log("polytotal is "+lengthTotal+" long"); //totalcheck
 				});
-				
+
+				originalLength = lengthTotal/1000
+				originalLength = Math.round(originalLength * 1000) / 1000
+
 				console.log(firstLat, firstLon,lastLat, lastLon);
+				console.log("original Length is "+originalLength);
 				var start = new google.maps.LatLng(firstLat, firstLon);
 				var end = new google.maps.LatLng(lastLat, lastLon);
+				
+
+				//find straight Distance (as crow flys)
+				var R = 6371; // Radius of the earth in km
+				var dLat = deg2rad(lastLat-firstLat);  // deg2rad below
+				var dLon = deg2rad(lastLon-firstLon); 
+				var a = 
+				    Math.sin(dLat/2) * Math.sin(dLat/2) +
+				    Math.cos(deg2rad(firstLat)) * Math.cos(deg2rad(lastLat)) * 
+				    Math.sin(dLon/2) * Math.sin(dLon/2)
+				    ; 
+				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+				var straightDistance = R * c; // Distance in km
+				straightDistance = Math.round(straightDistance * 1000) / 1000
+				console.log("straight distance is " + straightDistance);
+				
 				var request = {
 					origin: start,
 					destination: end,
@@ -208,20 +232,45 @@ function initMap() {
 					provideRouteAlternatives: true
 				};
 				
+				var marker = new google.maps.Marker({
+					position: start,
+					map: map,
+					draggable: true,
+					title: "Drag me!",
+					icon: 'img/start_flag.png'
+				});
+
+				var endMarker = new google.maps.Marker({
+					position: end,
+					map: map,
+					draggable: true,
+					title: "Drag me!",
+					icon: 'img/end_flag.png'
+				});
+				
+				var recommendedDistance= 0;
+
 				directionsService.route(request, function(result, status) {
 
 					if (status == 'OK') {
+		
+						for(i = 0; i < result.routes[0].legs.length; i++){
+  							recommendedDistance += parseFloat(result.routes[0].legs[i].distance.value);
+							}
+						console.log("recommended route length is "+ recommendedDistance/1000);
+						recommendedDistance= recommendedDistance/1000
+						$('#recommended-route').text("Average Heartrate: " + Math.round((totalHR/totalTracks)) + "bpm " 								+ "Original Distance: "+ originalLength +"km Distance as Crow Flys: "+ straightDistance+"km Recommended Route Distance: " 
+							+ recommendedDistance +"km " );
 						directionsDisplay.setDirections(result);
 					}
 				
-					//  For testing to see if values coming in are mental
-					//console.log("LAT " + lat + " LON " + lon + " HR " + hr + " CAD " + cad);
+
   					
 				});
 
 				// Add the overview stats to preview run details...
-				$('#activity-overview').text("Average Heartrate: " + (totalHR/totalTracks) + " Average Cadence: " + (totalCAD/totalTracks));
-  // Recentre the MAP
+				//$('#activity-overview').text("Average Heartrate: " + (totalHR/totalTracks) + "bpm " + "Original Distance: "+ originalLength +"km Distance as Crow Flys: "+ straightDistance+"km " );
+  				// Recentre the MAP
 				map.setCenter(new google.maps.LatLng(totalLat/totalTracks, totalLon/totalTracks));
 				map.fitBounds(new google.maps.LatLngBounds(new google.maps.LatLng(minLat, minLon),new google.maps.LatLng(maxLat, maxLon)));
 				
@@ -277,4 +326,8 @@ function initMap() {
 		marker.getPosition()
 		alert("End position saved.")
 	});
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
 }
