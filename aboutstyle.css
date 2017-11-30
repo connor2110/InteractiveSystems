@@ -94,6 +94,12 @@ td{
 	font-size: 10pt;
 }
 
+#control-traffic-toggle {
+	width: 120px;
+	padding-top: 2px;
+	margin-left: 25px;
+}
+
 .logo {
 	padding-bottom: 20px;
 	width:50%;

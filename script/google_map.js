@@ -4,6 +4,8 @@ function initMap() {
 	var controlStreetView = $("#control-street-view");
 	var controlMapView = $("#control-map-view");
 	var controlText = $("#control-text");
+	var controlTrafficToggle = $('#control-traffic-toggle');
+	var traffic = 0;
 
 	var glasgow_coords = {lat: 55.873724, lng: -4.292538};
 	var map = new google.maps.Map(document.getElementById('map'), {
@@ -91,6 +93,9 @@ function initMap() {
 			}
 		]
 	});
+	
+	trafficLayer = new google.maps.TrafficLayer();
+	
 	var marker = new google.maps.Marker({
 		position: glasgow_coords,
 		map: map
@@ -111,5 +116,17 @@ function initMap() {
 
 	controlMapView.click(function() {
   		map.getStreetView().setOptions({visible:false,position:glasgow_coords});
+	});
+	
+	controlTrafficToggle.click(function() {
+		if(traffic == 0){
+			//traffic layer is disabled.. enable it
+			traffic = 1
+			trafficLayer.setMap(map);
+		} else {
+			//traffic layer is enabled.. disable it
+			traffic = 0
+			trafficLayer.setMap(null);             
+		}
 	});
 }

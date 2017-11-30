@@ -1,3 +1,4 @@
+var map;
 function initMap() {
 	var controlZoomIn = $("#control-zoom-in");
 	var controlZoomOut = $("#control-zoom-out");
@@ -6,11 +7,13 @@ function initMap() {
 	var controlText = $("#control-text");
 	var controlRaceStart = $("#control-race-start");
 	var controlRaceFinish = $("#control-race-finish");
+	var controlTrafficToggle = $('#control-traffic-toggle');
+	var traffic = 0;
 
 	var glasgow_coords = new google.maps.LatLng(55.873724, -4.292538);
 	var directionsService = new google.maps.DirectionsService;
   	var directionsDisplay = new google.maps.DirectionsRenderer({suppressMarkers: true});
-	var map = new google.maps.Map(document.getElementById('map'), {
+	map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 12,
 		center: glasgow_coords,
 		disableDefaultUI: true,
@@ -96,7 +99,8 @@ function initMap() {
 		]
 	});
 	directionsDisplay.setMap(map);
-	
+	trafficLayer = new google.maps.TrafficLayer();
+        
 	$(document).ready(function(){
         	$("input").change(function(e) {
 
@@ -326,8 +330,26 @@ function initMap() {
 		marker.getPosition()
 		alert("End position saved.")
 	});
+
+	controlTrafficToggle.click(function() {
+		if(traffic == 0){
+			//traffic layer is disabled.. enable it
+			traffic = 1
+			trafficLayer.setMap(map);
+		} else {
+			//traffic layer is enabled.. disable it
+			traffic = 0
+			trafficLayer.setMap(null);             
+		}
+	});
+}
+
+function toggleTraffic(){
+    
 }
 
 function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
+
+
