@@ -60,6 +60,16 @@ p{
 	margin: 20px;
 }
 
+#control-register {
+	width: 80px;
+	height: 25px;
+	margin: 20px;
+}
+
+#control-register-text {
+	font-size: 10pt;
+}
+
 .logo {
 	padding-bottom: 20px;
 	width:50%;

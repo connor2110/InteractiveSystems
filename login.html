@@ -15,6 +15,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!--Scripts-->
 	<script src="script/google_map.js"></script>
+	<script src="script/login.js"></script>
 	
 	<title>Street Racing</title>
 </head>
@@ -26,39 +27,35 @@
 
 	<div id="login-box" class="row" align="center">
 		<div id="control-text" class="control-text">
-			<p style="font-size: 32pt"> &nbsp;&nbsp;Login: </p>
+			<p id="login-text" style="font-size: 32pt"> Login: </p>
 		</div>
 
 		<div class="login">
-			<p>Username:   </p> <input type="text" name="Username" value="Jker"><br>
-			<p>Password:       </p><input type="text" name="Name" value="Jebediah Kerman"><br>
+			<p>Username:   </p> <input type="text" name="Username" value="" title="Type your username in here."><br>
+			<p>Password:       </p><input type="password" name="Name" value="" title="Type your password in here."><br>
 		</div>
 
-
-
-		<div>
-			<div id="control-login" class="control-ui" title = "Click here to login!">
-				<a href="index.html">
-				<div id="control-text" class="control-text">
-					<p> Login</p> 
-				</div>
-				</a>
+		<div class="container-fluid"><div id="control-login" class="control-ui" title = "Click here to login!">
+			<a href="index.html">
+			<div id="control-text" class="control-text">
+				<p id="control-login-text"> Login</p> 
 			</div>
+			</a>
+		</div></div>
 
-			<div id="control-login" class="control-ui" title = "Click here to register!">
-				<a href="register.html">
+		<div class="row">
+			<div class="col-xs-2">
+			<div id="control-register" class="control-ui" title = "Click here to register!">
 				<div id="control-text" class="control-text">
-					<p> Register</p> 
+					<p id="control-register-text"> Register</p> 
 				</div>
-				</a>
 			</div>
+			</div>
+			<div id="col-xs-10"></div>
 		</div>
 
 
 	</div>
-
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap"></script>
 
 
 </body>
