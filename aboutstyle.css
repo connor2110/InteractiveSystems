@@ -37,11 +37,7 @@ p{
 	height: 60px;
 }
 
-.profile{
-	text-align: left;
-	margin-left:800px;
-	margin-right:100px;
-}
+
 
 
 
@@ -52,6 +48,12 @@ p{
 #column-zoom-in {
 	margin-left: 25px;
 }
+
+#control-profile-update {
+	padding-top: 14px;
+	width: 95px;
+}
+
 .logo {
 	padding-bottom: 20px;
 	width:50%;
@@ -85,7 +87,7 @@ a:active {
     border:0 none !important;
 }
 
-.button, .control-text {
+.button, .control-text, .profile>p{
 	display: inline-block;
 	border: none;
 	font: normal 48px/normal "Warnes", Helvetica, sans-serif;
@@ -99,6 +101,43 @@ a:active {
 	-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 	-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.profile{
+	margin-left:400px;
+	text-align:left;
+}
+.profile>input{
+	background:none;
+	border: none;
+	color:white;
+	border-bottom: 2px solid #ff00de;
+}
+
+.profile>p{
+	font-size: 20pt;
+	margin-top:10px;
+	margin-right:20px;
+}
+
+.profile-text>input[type=text] {
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+     width: 25%;
+    background:none;
+    border: none;
+    color:white;
+    border-bottom: 2px solid #ff00de;
+     text-align: top;
+    height:400px;
+}
+
+.profile-text>input[type=text]:focus {
+    width: 50%;
+    background:none;
+    border: none;
+    color:white;
+    border-bottom: 2px solid #ff00de;
 }
 
 .control-text>p {
