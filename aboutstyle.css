@@ -139,18 +139,17 @@ a:active {
 .profile-text>input[type=text] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-     width: 25%;
+    width: 25%;
     background:none;
     border: none;
     color:white;
     border-bottom: 2px solid #ff00de;
-     text-align: top;
-    height:400px;
+    text-align: top;
 }
 
 .profile-text>input[type=text]:focus {
     width: 50%;
-    background:none;
+    background:#222223;
     border: none;
     color:white;
     border-bottom: 2px solid #ff00de;
