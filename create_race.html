@@ -19,7 +19,7 @@
 	<title>Street Racing</title>
 </head>
 <body>
-	<div class="container-fluid">
+	<div id="site-header" class="container-fluid">
  		<ul class="nav nav-pills nav-justified">
    			<li><a href="index.html"><img class="logo" src="img/logo.png" alt="Street Racing logo"></a></li>
    			<li><a href="create_race.html"><div class="button">
@@ -37,13 +37,11 @@
   		</ul>
 	</div>
 
-<div id="map"></div>
+<div id="map-section" class="container-fluid">
+	<div id="map"></div>
+</div>
 <!------------------------------------------------------------------------^ Map! ^--
 -------------------------------temp open file button------------------------->
-
-    <p id="file-preview"> No File Selected </p>
-    <input id="file-input" type="file" name="gpxfile"/>
-    <marquee id="recommended-route"></marquee>	
 
 <div class="container">
 	<div class="col-sm-1" align="center">
@@ -101,6 +99,18 @@
 </div>
 
 <!--------------------------- Peddle Buttons ------------------------------------->
+
+    <p id="file-preview"> No File Selected </p>
+    <input id="file-input" type="file" name="gpxfile"/>
+	<marquee>
+		<img src="img/proople-lambo.svg" style="max-height: 5%; max-width: 5%; float:left;"><div id="recommended-route" style="float:left;"></div><img src="img/proople-lambo.svg" style="max-height: 5%; max-width: 5%; float:left;">
+	</marquee>
+
+<audio controls autoplay hidden="true">
+  <source src="audio/sik_b33tz.ogg" type="audio/ogg">
+Your browser does not support the audio element.
+</audio>
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap"></script>
 
 </body>

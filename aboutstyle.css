@@ -30,9 +30,20 @@ td{
 	font-size: 40px;
 }
 
+#site-header {
+	border-bottom: 2px solid #FF69B4;
+	border-top: 2px solid #FF69B4;
+	margin-bottom: 10px;
+}
+
+#map-section {
+	border-bottom: 2px solid #FF69B4;
+	margin-bottom: 10px;
+}
 #map {
 	margin-left:40px;
 	margin-right:40px;
+	margin-bottom: 10px;
         height: 400px;
 }
 
