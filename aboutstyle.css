@@ -132,6 +132,10 @@ a:active {
 	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
+.container-fluid>.row>#title{
+	font-size: 24px;
+}
+
 
 .profile{
 	margin-left:800px;
@@ -184,12 +188,22 @@ a:active {
 
 }
 .leaderpoints{
-	margin-left: 700px;
-	text-align:left;
+	margin-left: 70px;
+	border-radius: 25px;
+	padding: 20px;
+	border: 2px solid #ff00de;
+	width: 200px;
+	height: 300px;
 }
 
 .leaderpoints>p{
 	color: white;
+	font-size:14pt;
+	margin-left: 30px;
+	text-align:left;
+}
+
+.leaderpoints>h1{
 	font-size:14pt;
 }
 
