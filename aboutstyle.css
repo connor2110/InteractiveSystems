@@ -14,6 +14,18 @@ p{
 	text-align: center;
 }
 
+th{
+	margin-right: 60px;
+	margin-bottom: 30px;
+	
+}
+
+td{
+	font-size: 14pt;
+	color:white;
+    margin-right:20px;
+}
+
 .header{
 	font-size: 40px;
 }
@@ -43,6 +55,7 @@ p{
 
 #column-map-view {
 	margin-right: 25px;
+	margin-left:80px;
 }
 
 #column-zoom-in {
@@ -93,7 +106,7 @@ a:active {
     border:0 none !important;
 }
 
-.button, .control-text, .profile>p, .login>p{
+.button, .control-text, .profile>p, .login>p, .container-fluid>.row>.col-lg-4, .container-fluid>.row>#title,.leaderpoints>h1{
 	display: inline-block;
 	border: none;
 	font: normal 48px/normal "Warnes", Helvetica, sans-serif;
@@ -109,8 +122,9 @@ a:active {
 	transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
 }
 
+
 .profile{
-	margin-left:400px;
+	margin-left:800px;
 	text-align:left;
 }
 .profile>input, .login>input{
@@ -118,6 +132,13 @@ a:active {
 	border: none;
 	color:white;
 	border-bottom: 2px solid #ff00de;
+	
+}
+
+.profile>input:focus{
+	border-bottom: 2px solid #ff00de;
+	outline: none;
+
 }
 
 .profile>p, .login>p{
@@ -129,12 +150,13 @@ a:active {
 .profile-text>input[type=text] {
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-    width: 25%;
+    width: 30%;
     background:none;
     border: none;
     color:white;
     border-bottom: 2px solid #ff00de;
     text-align: top;
+    outline: none;
 }
 
 .profile-text>input[type=text]:focus {
@@ -143,6 +165,22 @@ a:active {
     border: none;
     color:white;
     border-bottom: 2px solid #ff00de;
+    outline: none;
+}
+
+.leader-table{
+	margin-left: 650px;
+	text-align:left;
+
+}
+.leaderpoints{
+	margin-left: 700px;
+	text-align:left;
+}
+
+.leaderpoints>p{
+	color: white;
+	font-size:14pt;
 }
 
 .control-text>p {
@@ -153,6 +191,10 @@ a:active {
 	text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
 }
 
+.container-fluid>.row>.col-lg-4 {
+	text-shadow: 0 0 10px rgba(255,255,255,1) , 0 0 20px rgba(255,255,255,1) , 0 0 30px rgba(255,255,255,1) , 0 0 40px #00ffff , 0 0 70px #00ffff , 0 0 80px #00ffff , 0 0 100px #00ffff ;
+	font-size: 14pt;
+}
 .raceSetButtons {
 	/*padding: 25px 20px 20px 20px /*Top Right Bottom Left */
 }
