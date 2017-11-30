@@ -19,47 +19,36 @@
 	<title>Street Racing</title>
 </head>
 <body>
-	<div class="container-fluid">
- 		<ul class="nav nav-pills nav-justified">
-   			<li><a href="index.html"><img class="logo" src="img/logo.png" alt="Street Racing logo"></a></li>
-   			<li><div class="button">
-				<h3>Create New Race</h3>
-			</div></a></li>
-   			<li><div class="button">
-				<h3>Leaderboard</h3>
-			</div></a></li>
-   			<li><div class="button">
-				<h3>My Profile</h3>
-			</div></a></li>
-  		</ul>
+	<div class="container-fluid" style="max-width: 40%; max-height: 40%;" align="center">
+   			<img class="logo" src="img/logo.png" alt="Street Racing logo"></a>
 	</div>
 
 
-<div class="container-fluid">
-
-	<div class="col-sm-4" align="">
+	<div id="login-box" class="row" align="center">
 		<div id="control-text" class="control-text">
 			<p style="font-size: 32pt"> &nbsp;&nbsp;Login: </p>
 		</div>
 
-		<form action="/action_page.php">
-			<div id="control-text" class="control-text">
-				<p style="font-size: 24pt"> 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Username: 
-			</div>
-				<input type="text" name="Username" value=""><br>
-			<div id="control-text" class="control-text">
-				<p style="font-size: 24pt"> 
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password: 
-				</div>
-				<input type="text" name="Password" value=""><br>
-		</form>
+		<div class="login">
+			<p>Username:   </p> <input type="text" name="Username" value="Jker"><br>
+			<p>Password:       </p><input type="text" name="Name" value="Jebediah Kerman"><br>
+		</div>
 
-		<div class="col-sm-1" align="center">
-			<div id="loginButton" class="control-ui" title = "Click here to login!">
+
+
+		<div>
+			<div id="control-login" class="control-ui" title = "Click here to login!">
 				<a href="index.html">
 				<div id="control-text" class="control-text">
 					<p> Login</p> 
+				</div>
+				</a>
+			</div>
+
+			<div id="control-login" class="control-ui" title = "Click here to register!">
+				<a href="register.html">
+				<div id="control-text" class="control-text">
+					<p> Register</p> 
 				</div>
 				</a>
 			</div>
@@ -68,14 +57,6 @@
 
 	</div>
 
-	<div class="col-sm-3" align="center"></div>
-	<div class="col-sm-2" align="center">
-		<div id="control-text" class="button">
-			<p style="font-size: 50pt"> </br> Register </p>
-		</div>
-</div>
-
-	<div class="col-sm-3"></div>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyDH0IwlooTMJ3s3Syt0wkCOvHe2s-y9yRk&callback=initMap"></script>
 

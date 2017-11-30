@@ -54,6 +54,12 @@ p{
 	width: 95px;
 }
 
+#control-login {
+	padding-top: 14px;
+	width: 95px;
+	margin: 20px;
+}
+
 .logo {
 	padding-bottom: 20px;
 	width:50%;
@@ -87,7 +93,7 @@ a:active {
     border:0 none !important;
 }
 
-.button, .control-text, .profile>p{
+.button, .control-text, .profile>p, .login>p{
 	display: inline-block;
 	border: none;
 	font: normal 48px/normal "Warnes", Helvetica, sans-serif;
@@ -107,14 +113,14 @@ a:active {
 	margin-left:400px;
 	text-align:left;
 }
-.profile>input{
+.profile>input, .login>input{
 	background:none;
 	border: none;
 	color:white;
 	border-bottom: 2px solid #ff00de;
 }
 
-.profile>p{
+.profile>p, .login>p{
 	font-size: 20pt;
 	margin-top:10px;
 	margin-right:20px;
@@ -152,10 +158,14 @@ a:active {
 	/*padding: 25px 20px 20px 20px /*Top Right Bottom Left */
 }
 
-.control-panel {
+.control-panel, #login-box {
 	background-color: transparent;
 	border-style: solid;
 	border-radius: 25px;
 	border-width: 2px;
 	border-color: #FF69B4;
+}
+
+.loginPage-box {
+	padding-bottom:10px;
 }
