@@ -210,6 +210,22 @@ function initMap() {
 				originalLength = Math.round(originalLength * 1000) / 1000
 
 				console.log(firstLat, firstLon,lastLat, lastLon);
+						var lineSymbol = {
+						  path: google.maps.SymbolPath.CIRCLE,
+						  scale: 8,
+						  strokeColor: '#393'
+						};
+						// Create the polyline and add the symbol to it via the 'icons' property.
+						var line = new google.maps.Polyline({
+						  path: [ new google.maps.LatLng(firstLat, firstLon), new google.maps.LatLng(lastLat, lastLon) ],
+						  icons: [{
+						    icon: lineSymbol,
+						    offset: '100%'
+						  }],
+						  map: map
+						});
+
+						animateCircle(line);
 				console.log("original Length is "+originalLength);
 				var start = new google.maps.LatLng(firstLat, firstLon);
 				var end = new google.maps.LatLng(lastLat, lastLon);
@@ -266,7 +282,7 @@ function initMap() {
 						$('#recommended-route').text("Average Heartrate: " + Math.round((totalHR/totalTracks)) + "bpm " 								+ "Original Distance: "+ originalLength +"km Distance as Crow Flys: "+ straightDistance+"km Recommended Route Distance: " 
 							+ recommendedDistance +"km " );
 						directionsDisplay.setDirections(result);
-					}
+										}
 				
 
   					
@@ -320,15 +336,48 @@ function initMap() {
 	controlMapView.click(function() {
   		map.getStreetView().setOptions({visible:false,position:glasgow_coords});
 	});
-
+	
+	var startPos;
 	controlRaceStart.click(function() {
-		marker.getPosition()
+		startPos = marker.getPosition();
 		alert("Start position saved.")
 	});
 	
+	var endPos;
 	controlRaceFinish.click(function() {
-		marker.getPosition()
-		alert("End position saved.")
+		endPos = endMarker.getPosition();
+		console.log("working");
+		var request = {
+					origin: startPos,
+					destination: endPos,
+					travelMode: 'DRIVING',
+					provideRouteAlternatives: true
+				};
+		directionsService.route(request, function(result, status) {
+										console.log("working1");
+					if (status == 'OK') {
+						console.log("working");
+						directionsDisplay.setDirections(result);
+					}		
+				});
+		var lineSymbol = {
+						  path: google.maps.SymbolPath.CIRCLE,
+						  scale: 8,
+						  strokeColor: '#393'
+						};
+						// Create the polyline and add the symbol to it via the 'icons' property.
+						var line = new google.maps.Polyline({
+						  path: [ startPos, endPos ],
+						  icons: [{
+						    icon: lineSymbol,
+						    offset: '100%'
+						  }],
+						  map: map
+						});
+
+						animateCircle(line);
+		alert("End position saved.");
+
 	});
 
 	controlTrafficToggle.click(function() {
@@ -352,4 +401,13 @@ function deg2rad(deg) {
   return deg * (Math.PI/180)
 }
 
+function animateCircle(line) {
+          var count = 0;
+          window.setInterval(function() {
+            count = (count + 1) % 200;
 
+            var icons = line.get('icons');
+            icons[0].offset = (count / 2) + '%';
+            line.set('icons', icons);
+        }, 20);
+      }
