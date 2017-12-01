@@ -166,7 +166,7 @@ a:active {
 	
 }
 
-.profile>input:focus{
+.profile>input:focus,.login>input:focus{
 	border-bottom: 2px solid #ff00de;
 	outline: none;
 
