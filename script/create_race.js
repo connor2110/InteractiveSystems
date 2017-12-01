@@ -361,21 +361,66 @@ function initMap() {
 					}		
 				});
 		var lineSymbol = {
-						  path: google.maps.SymbolPath.CIRCLE,
-						  scale: 8,
-						  strokeColor: '#393'
-						};
-						// Create the polyline and add the symbol to it via the 'icons' property.
-						var line = new google.maps.Polyline({
-						  path: [ startPos, endPos ],
-						  icons: [{
-						    icon: lineSymbol,
-						    offset: '100%'
-						  }],
-						  map: map
-						});
+			path: google.maps.SymbolPath.CIRCLE,
+			scale: 8,
+			strokeColor: '#393'
+			};
+		// Create the polyline and add the symbol to it via the 'icons' property.
+		var line = new google.maps.Polyline({
+			path: [ startPos, endPos ],
+			icons: [{
+			icon: lineSymbol,
+		    offset: '100%'
+		}],
+			map: map
+		});
 
-						animateCircle(line);
+		animateCircle(line);
+
+		//Create the GPX file
+		var xmlStr = 	'<?xml version="1.0" encoding="utf-8"?>' +
+						'<gpx creator="Street Racing" version="1.1">' +
+							'<metadata>' +
+								'<link href="connect.garmin.com">' +
+									'<text>Street Racing</text>' +
+								'</link>' +
+								'<time>2017-06-07T12:55:10.000Z</time>' +
+							'</metadata>' +
+							'<trk>' +
+								'<name>A Race</name>' +
+								'<type>driving</type>' +
+								'<trkseg>' +
+									'<trkpt lat="' + startPos.lat() + '" lon="' + startPos.lng() + '">' +
+									'</trkpt>' +
+									'<trkpt lat="' + endPos.lat() + '" lon="' + endPos.lng() + '">' +
+									'</trkpt>' +
+								'</trkseg>' +
+							'</trk>' +
+						'</gpx>';
+		var parser = new DOMParser();
+		var xmlDoc = parser.parseFromString(xmlStr, "text/xml");
+		var xmlhttp = new XMLHttpRequest();
+		
+		xmlhttp.open("POST","php/save_file.php",true);
+	    //Must add this request header to XMLHttpRequest request for POST
+	    xmlhttp.setRequestHeader("Content-type", "text/xml");
+		xmlhttp.send(xmlStr);
+
+		$.ajax({
+			url: "php/save_file.php",
+			type: "post",
+			data: { 
+            	objectID: id,
+	            content: contentMap[id]
+	        },
+	        success: function(){
+	            alert("success");
+	        },
+	        error:function(){
+	            alert("failure");
+	        }
+		})
+
 		alert("End position saved.");
 
 	});
